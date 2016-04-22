@@ -48,7 +48,9 @@ vim /usr/local/apache/conf/pagespeed.conf
   ModPagespeedLRUCacheKbPerProcess 8192
   ModPagespeedLRUCacheByteLimit 16384
   ModPagespeedMemcachedServers localhost:11211
+  ModPagespeedMessageBufferSize 100000
   ModPagespeedLogDir /var/log/pagespeed
+
 </IfModule>
 </pre>
 
