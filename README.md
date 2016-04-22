@@ -26,7 +26,7 @@ vim /usr/local/apache/conf/includes/pre_virtualhost_2.conf
 </pre>
 
 REPLACE APACHE SETTINGS WITH BELOW, leave FCGI settings alone
-<pre>
+
 KeepAlive On
 KeepAliveTimeout 2
 MaxKeepAliveRequests 1920
@@ -76,7 +76,7 @@ SSLProxyEngine on
        CacheIgnoreHeaders Set-Cookie
 </IfModule>
 </IfModule>
-</pre>
+
 
 Replace contents of file with below
 <pre>
@@ -84,7 +84,7 @@ vim /usr/local/apache/conf/pagespeed.conf
 </pre>
 
 Replace contents of file with below
-<pre>
+
 <IfModule !mod_version.c>
   LoadModule version_module modules/mod_version.so
 </IfModule>
@@ -111,7 +111,6 @@ Replace contents of file with below
   ModPagespeedLogDir /var/log/pagespeed
 
 </IfModule>
-</pre>
 
 <pre>
 service httpd stop; service httpd start
@@ -122,7 +121,6 @@ service memcached restart
 vim /etc/sysctl.conf
 </pre>
 
-<pre>
 net.core.rmem_default = 8388608
 net.core.wmem_default = 8388608
 net.core.netdev_max_backlog = 30000
@@ -137,7 +135,7 @@ net.ipv4.tcp_tw_reuse = 1
 net.ipv4.tcp_slow_start_after_idle = 0
 net.ipv4.tcp_keepalive_time = 60
 net.ipv4.tcp_max_tw_buckets = 2000000
-</pre>
+
 
 <pre>
 sysctl -p
