@@ -22,43 +22,11 @@ Select [Save and Build]
 </pre>
 
 <pre>
-vim /usr/local/apache/conf/pagespeed.conf
-
-##Paste this in, replace whatever is in there
-
-<IfModule !mod_version.c>
-  LoadModule version_module modules/mod_version.so
-</IfModule>
-
-<IfVersion < 2.4>
-  LoadModule pagespeed_module modules/mod_pagespeed.so
-</IfVersion>
-
-<IfVersion >= 2.4.2>
-  LoadModule pagespeed_module modules/mod_pagespeed_ap24.so
-</IfVersion>
-
-<IfModule pagespeed_module>
-  ModPagespeed on
-  ModPagespeedModifyCachingHeaders off
-  AddOutputFilterByType MOD_PAGESPEED_OUTPUT_FILTER text/html
-  ModPagespeedFileCachePath "/var/cache/pagespeed/"
-  ModPagespeedFileCacheSizeKb 102400
-  ModPagespeedCreateSharedMemoryMetadataCache "/var/cache/pagespeed/" 102400
-  ModPagespeedLRUCacheKbPerProcess 8192
-  ModPagespeedLRUCacheByteLimit 16384
-  ModPagespeedMemcachedServers localhost:11211
-  ModPagespeedMessageBufferSize 100000
-  ModPagespeedLogDir /var/log/pagespeed
-
-</IfModule>
+vim /usr/local/apache/conf/includes/pre_virtualhost_2.conf
 </pre>
 
+REPLACE APACHE SETTINGS WITH BELOW, leave FCGI settings alone
 <pre>
-vim /usr/local/apache/conf/includes/pre_virtualhost_2.conf
-
-## REPLACE APACHE SETTINGS WITH BELOW, leave FCGI settings alone
-
 KeepAlive On
 KeepAliveTimeout 2
 MaxKeepAliveRequests 1920
@@ -110,12 +78,13 @@ SSLProxyEngine on
 </IfModule>
 </pre>
 
+Replace contents of file with below
 <pre>
 vim /usr/local/apache/conf/pagespeed.conf
+</pre>
 
-##Replace contents of file with below
-
-
+Replace contents of file with below
+<pre>
 <IfModule !mod_version.c>
   LoadModule version_module modules/mod_version.so
 </IfModule>
@@ -149,4 +118,27 @@ service httpd stop; service httpd start
 service memcached restart
 </pre>
 
-done
+<pre>
+vim /etc/sysctl.conf
+</pre>
+
+<pre>
+net.core.rmem_default = 8388608
+net.core.wmem_default = 8388608
+net.core.netdev_max_backlog = 30000
+net.core.somaxconn = 30000
+net.ipv4.tcp_max_syn_backlog = 30000
+net.core.rmem_max = 8388608
+net.core.wmem_max = 8388608
+net.ipv4.tcp_rmem = 4096 87380 8388608
+net.ipv4.tcp_wmem = 4096 65536 8388608
+net.ipv4.tcp_fin_timeout = 20
+net.ipv4.tcp_tw_reuse = 1
+net.ipv4.tcp_slow_start_after_idle = 0
+net.ipv4.tcp_keepalive_time = 60
+net.ipv4.tcp_max_tw_buckets = 2000000
+</pre>
+
+<pre>
+sysctl -p
+</pre>
