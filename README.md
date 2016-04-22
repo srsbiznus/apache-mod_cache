@@ -79,7 +79,6 @@ SSLProxyEngine on
 </IfModule>
 ```
 
-Replace contents of file with below
 <pre>
 vim /usr/local/apache/conf/pagespeed.conf
 </pre>
