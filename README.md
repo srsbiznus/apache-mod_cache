@@ -3,6 +3,7 @@
 
 /scripts/easyapache
 
+<pre>
 Select ** DEFAULT **
 Hit "Tab"
 Select [Customize Profile]
@@ -16,3 +17,4 @@ Select [Exhaustive Options List]
 Select Cache
 Hit "Tab" select [Next Step]
 Select [Save and Build]
+</pre>
