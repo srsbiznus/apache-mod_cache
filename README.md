@@ -148,3 +148,5 @@ vim /usr/local/apache/conf/pagespeed.conf
 service httpd stop; service httpd start
 service memcached restart
 </pre>
+
+done
