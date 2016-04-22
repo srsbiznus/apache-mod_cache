@@ -27,7 +27,7 @@ vim /usr/local/apache/conf/includes/pre_virtualhost_2.conf
 
 REPLACE APACHE SETTINGS WITH BELOW, leave FCGI settings alone
 
-KeepAlive On
+`KeepAlive On
 KeepAliveTimeout 2
 MaxKeepAliveRequests 1920
 <IfModule mpm_event_module>
@@ -75,7 +75,7 @@ SSLProxyEngine on
        CacheLockMaxAge 10
        CacheIgnoreHeaders Set-Cookie
 </IfModule>
-</IfModule>
+</IfModule>`
 
 
 Replace contents of file with below
